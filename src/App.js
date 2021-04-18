@@ -6,27 +6,11 @@ import { Book } from "./components/Book/Book";
 import img from "./components/Book/images/book.png";
 import { BookForm } from "./components/Book/BookForm";
 
-
-
 function App() {
   const [books, setBooks] = useState([
     { name: "book_name", author: "book_author", pages: 123, image: img },
     { name: "book_name", author: "book_author", pages: 123, image: img },
   ]);
-
-  // const onHandleSubmit = () => {
-  //   let newBook = [
-  //     ...books,
-  //     {
-  //       id: books.length + 1,
-  //       name: "book_name",
-  //       author: "book_author",
-  //       pages: 123,
-  //       image: img,
-  //     },
-  //   ];
-  //   setBooks(newBook);
-  // };
 
   const onBookSubmit = (event) => {
     event.preventDefault();
@@ -45,12 +29,20 @@ function App() {
     setBooks(newBooks);
   };
 
+  const deleteBookHandle = (index) => {
+    let newBooks = books.slice();
+    newBooks.splice(index, 1);
+    setBooks(newBooks);
+    console.log(books);
+  };
+
   return (
     <div className="App">
       <BookForm onBookSubmit={onBookSubmit}></BookForm>
-      {books.map((book) => {
+      {books.map((book, index) => {
         return (
           <Book
+            onClickDeleteBook={() => deleteBookHandle(index)}
             key={book.id}
             name={book.name}
             author={book.author}
