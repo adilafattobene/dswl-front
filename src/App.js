@@ -2,7 +2,7 @@ import "./App.css";
 
 import React, { useState } from "react";
 
-import { Book } from "./components/Book/Book";
+import Books from "./components/Books/Books";
 import img from "./components/Book/images/book.png";
 import { BookForm } from "./components/Book/BookForm";
 
@@ -37,7 +37,6 @@ function App() {
   };
 
   const changeBookHandle = (event) => {
-
     event.preventDefault();
 
     let id = Number(event.target.id.value);
@@ -50,7 +49,7 @@ function App() {
       author: event.target.author.value,
       pages: event.target.pages.value,
       image: img,
-    }
+    };
 
     setBooks(newBooks);
   };
@@ -58,25 +57,11 @@ function App() {
   return (
     <div className="App">
       <BookForm onBookSubmit={onBookSubmit}></BookForm>
-
-      {books.map((book, index) => {
-        return (
-          <>
-            {console.log(index)}
-            <Book
-              onClickDeleteBook={() => deleteBookHandle(index)}
-              onBookEdit={changeBookHandle}
-              index={index}
-              name={book.name}
-              author={book.author}
-              pages={book.pages}
-              image={book.image}
-            >
-              component_description
-            </Book>
-          </>
-        );
-      })}
+      <Books
+        books={books}
+        deleteBookHandle={deleteBookHandle}
+        changeBookHandle={changeBookHandle}
+      />
     </div>
   );
 }

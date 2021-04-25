@@ -4,7 +4,7 @@ import "./Book.css";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import ModalBook from "./ModalBook";
 
-export const Book = (props) => {
+export default function Book(props) {
   const [openModal, setOpenModal] = useState(false);
 
   const book = {
