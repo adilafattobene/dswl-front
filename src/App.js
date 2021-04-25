@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import Books from "./components/Books/Books";
 import img from "./components/Book/images/book.png";
-import { BookForm } from "./components/Book/BookForm";
+import BookForm from "./components/NewBookForm/NewBookForm";
 
 function App() {
   const [books, setBooks] = useState([

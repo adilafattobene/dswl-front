@@ -1,6 +1,6 @@
 import React from "react";
 
-export const BookForm = (props) => {
+export default function BookForm(props) {
   return (
     <form onSubmit={props.onBookSubmit}>
       <input type="text" id="name" placeholder="Digite o nome do livro" />
@@ -13,4 +13,4 @@ export const BookForm = (props) => {
       <input type="submit" value="Cadastrar" />
     </form>
   );
-};
+}

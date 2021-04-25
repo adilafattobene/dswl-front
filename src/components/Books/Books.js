@@ -1,5 +1,5 @@
 import React from "react";
-import Book from "../Book/Book"
+import Book from "../Book/Book";
 
 export default function Books(props) {
   return (
@@ -24,4 +24,4 @@ export default function Books(props) {
       })}
     </div>
   );
-};
+}
