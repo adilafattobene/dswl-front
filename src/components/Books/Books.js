@@ -1,4 +1,4 @@
-import Book from "../Book/Book";
+import BookCard from "../BookCard/BookCard";
 import img from "../Book/images/book.png";
 import React from "react";
 
@@ -34,7 +34,7 @@ export default function Books(props) {
         return (
           <div>
             {console.log(index)}
-            <Book
+            <BookCard
               onClickDeleteBook={() => deleteBookHandle(index)}
               onBookEdit={changeBookHandle}
               index={index}
@@ -44,7 +44,7 @@ export default function Books(props) {
               image={book.image}
             >
               component_description
-            </Book>
+            </BookCard>
           </div>
         );
       })}

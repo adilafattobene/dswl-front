@@ -29,7 +29,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ModalBook(props) {
+export default function BookModal(props) {
   const classes = useStyles();
 
   // getModalStyle is not a pure function, we roll the style only on the first render
@@ -56,22 +56,10 @@ export default function ModalBook(props) {
       <p>Alterar o Livro:</p>
       <form onSubmit={props.onBookEdit}>
         <input type="hidden" id="id" value={book.id} disabled />
-        <input type="text" id="name" defaultValue={book.name}/>
-        <input
-          type="text"
-          id="author"
-          defaultValue={book.author}
-        />
-        <input
-          type="text"
-          id="pages"
-          defaultValue={book.pages}
-        />
-        <input
-          type="text"
-          id="child"
-          defaultValue={book.child}
-        />
+        <input type="text" id="name" defaultValue={book.name} />
+        <input type="text" id="author" defaultValue={book.author} />
+        <input type="text" id="pages" defaultValue={book.pages} />
+        <input type="text" id="child" defaultValue={book.child} />
         <input type="submit" value="Alterar" />
       </form>
     </div>

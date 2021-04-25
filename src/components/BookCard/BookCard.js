@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { BookImage } from "./BookImage";
-import "./Book.css";
+import { BookIcon } from "./BookIcon";
+import "./BookCard.css";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import ModalBook from "./ModalBook";
+import BookModal from "../BookModal/BookModal";
 
-export default function Book(props) {
+export default function BookCard(props) {
   const [openModal, setOpenModal] = useState(false);
 
   const book = {
@@ -16,18 +16,18 @@ export default function Book(props) {
   };
 
   return (
-    <div className="Book">
+    <div className="BookCard">
       <div>
         <p>
           {props.name}
-          <BookImage src={props.image} />
+          <BookIcon src={props.image} />
         </p>
         <p>{props.author}</p>
         <p>{props.pages}</p>
         {props.children}
       </div>
       <DeleteForeverIcon onClick={props.onClickDeleteBook} />
-      <ModalBook
+      <BookModal
         book={book}
         openModal={openModal}
         setOpenModal={setOpenModal}
