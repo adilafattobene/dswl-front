@@ -1,6 +1,7 @@
 import "./App.css";
 
 import React, { useState } from "react";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import Books from "./components/Books/Books";
 import Menu from "./components/Menu/Menu";
@@ -14,10 +15,23 @@ export default function App() {
   ]);
 
   return (
-    <div className="App">
-      <Menu/>
-      <BookForm books={books} setBooks={setBooks} />
-      <Books books={books} setBooks={setBooks} />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Menu />
+        <Redirect from="/" to="/books" exact />
+        <h1>Livros</h1>
+        <Route path="/books" exact>
+          <Books books={books} setBooks={setBooks} />
+        </Route>
+
+        <Route path="/books/new-book">
+          <BookForm books={books} setBooks={setBooks} />
+        </Route>
+
+        <Route path="/book/:id">
+          <BookForm books={books} setBooks={setBooks} />
+        </Route>
+      </div>
+    </BrowserRouter>
   );
 }

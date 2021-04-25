@@ -1,6 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "./Menu.css";
-
 
 export default function Menu() {
   return (
@@ -8,8 +8,8 @@ export default function Menu() {
       <nav>
         <ul>
           <li>
-            <a href="/"> Livros</a>
-            <a href="/"> Novo Livro</a>
+            <NavLink to="/books" exact> Livros</NavLink>
+            <NavLink to="/books/new-book"> Novo Livro</NavLink>
           </li>
         </ul>
       </nav>
