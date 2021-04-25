@@ -3,6 +3,12 @@ import { BookIcon } from "./BookIcon";
 import "./BookCard.css";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import BookModal from "../BookModal/BookModal";
+import styled from "styled-components";
+
+const IconesContainer = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+`;
 
 export default function BookCard(props) {
   const [openModal, setOpenModal] = useState(false);
@@ -26,13 +32,15 @@ export default function BookCard(props) {
         <p>{props.pages}</p>
         {props.children}
       </div>
-      <DeleteForeverIcon onClick={props.onClickDeleteBook} />
-      <BookModal
-        book={book}
-        openModal={openModal}
-        setOpenModal={setOpenModal}
-        onBookEdit={props.onBookEdit}
-      />
+      <IconesContainer>
+        <DeleteForeverIcon onClick={props.onClickDeleteBook} />
+        <BookModal
+          book={book}
+          openModal={openModal}
+          setOpenModal={setOpenModal}
+          onBookEdit={props.onBookEdit}
+        />
+      </IconesContainer>
     </div>
   );
 }

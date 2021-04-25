@@ -34,18 +34,22 @@ export default function Books(props) {
       {props.books.map((book, index) => {
         return (
           <div>
-            <Link to={"/book/" + Number(book.id)} key={index}>
-              <BookCard
-                onClickDeleteBook={() => deleteBookHandle(index)}
-                onBookEdit={changeBookHandle}
-                name={book.name}
-                author={book.author}
-                pages={book.pages}
-                image={book.image}
-              >
-                component_description
-              </BookCard>
-            </Link>
+            <BookCard
+              onClickDeleteBook={() => deleteBookHandle(index)}
+              onBookEdit={changeBookHandle}
+              name={book.name}
+              author={book.author}
+              pages={book.pages}
+              image={book.image}
+            >
+              component_description
+              <br/>
+              <br/>
+              <Link to={"/book/" + Number(book.id)} key={index}>
+                {" "}
+                Clique para saber mais...
+              </Link>
+            </BookCard>
           </div>
         );
       })}
