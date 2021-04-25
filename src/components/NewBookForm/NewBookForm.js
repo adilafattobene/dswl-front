@@ -1,8 +1,25 @@
 import React from "react";
+import img from "../Book/images/book.png";
 
 export default function BookForm(props) {
+  const onBookSubmit = (event) => {
+    event.preventDefault();
+
+    let newBooks = [
+      ...props.books,
+      {
+        id: props.books.length,
+        name: event.target.name.value,
+        author: event.target.author.value,
+        pages: event.target.pages.value,
+        image: img,
+      },
+    ];
+    props.setBooks(newBooks);
+  };
+
   return (
-    <form onSubmit={props.onBookSubmit}>
+    <form onSubmit={onBookSubmit}>
       <input type="text" id="name" placeholder="Digite o nome do livro" />
       <input
         type="text"

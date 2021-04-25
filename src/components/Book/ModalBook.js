@@ -61,19 +61,16 @@ export default function ModalBook(props) {
           type="text"
           id="author"
           defaultValue={book.author}
-          // placeholder="Digite o nome da(o) autora(o)"
         />
         <input
           type="text"
           id="pages"
           defaultValue={book.pages}
-          // placeholder="Digite o número de páginas"
         />
         <input
           type="text"
           id="child"
           defaultValue={book.child}
-          // placeholder="Digite o trecho do livro"
         />
         <input type="submit" value="Alterar" />
       </form>

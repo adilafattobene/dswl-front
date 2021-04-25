@@ -1,7 +1,33 @@
-import React from "react";
 import Book from "../Book/Book";
+import img from "../Book/images/book.png";
+import React from "react";
 
 export default function Books(props) {
+  const deleteBookHandle = (index) => {
+    let newBooks = props.books.slice();
+
+    newBooks.splice(index, 1);
+    props.setBooks(newBooks);
+  };
+
+  const changeBookHandle = (event) => {
+    event.preventDefault();
+
+    let id = Number(event.target.id.value);
+
+    let newBooks = props.books.slice();
+
+    newBooks[id] = {
+      id: id,
+      name: event.target.name.value,
+      author: event.target.author.value,
+      pages: event.target.pages.value,
+      image: img,
+    };
+
+    props.setBooks(newBooks);
+  };
+
   return (
     <div>
       {props.books.map((book, index) => {
@@ -9,8 +35,8 @@ export default function Books(props) {
           <div>
             {console.log(index)}
             <Book
-              onClickDeleteBook={() => props.deleteBookHandle(index)}
-              onBookEdit={props.changeBookHandle}
+              onClickDeleteBook={() => deleteBookHandle(index)}
+              onBookEdit={changeBookHandle}
               index={index}
               name={book.name}
               author={book.author}
