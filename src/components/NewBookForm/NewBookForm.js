@@ -1,5 +1,5 @@
 import React from "react";
-import img from "../Book/images/book.png";
+import img from "../BookCard/images/book.png";
 
 export default function BookForm(props) {
   const onBookSubmit = (event) => {

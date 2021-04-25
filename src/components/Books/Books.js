@@ -1,6 +1,7 @@
 import BookCard from "../BookCard/BookCard";
-import img from "../Book/images/book.png";
+import img from "../BookCard/images/book.png";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Books(props) {
   const deleteBookHandle = (index) => {
@@ -33,18 +34,18 @@ export default function Books(props) {
       {props.books.map((book, index) => {
         return (
           <div>
-            {console.log(index)}
-            <BookCard
-              onClickDeleteBook={() => deleteBookHandle(index)}
-              onBookEdit={changeBookHandle}
-              index={index}
-              name={book.name}
-              author={book.author}
-              pages={book.pages}
-              image={book.image}
-            >
-              component_description
-            </BookCard>
+            <Link to={"/book/" + Number(book.id)} key={index}>
+              <BookCard
+                onClickDeleteBook={() => deleteBookHandle(index)}
+                onBookEdit={changeBookHandle}
+                name={book.name}
+                author={book.author}
+                pages={book.pages}
+                image={book.image}
+              >
+                component_description
+              </BookCard>
+            </Link>
           </div>
         );
       })}

@@ -4,8 +4,9 @@ import React, { useState } from "react";
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 
 import Books from "./components/Books/Books";
+import Book from "./components/Book/Book";
 import Menu from "./components/Menu/Menu";
-import img from "./components/Book/images/book.png";
+import img from "./components/BookCard/images/book.png";
 import BookForm from "./components/NewBookForm/NewBookForm";
 
 export default function App() {
@@ -18,19 +19,24 @@ export default function App() {
     <BrowserRouter>
       <div className="App">
         <Menu />
-        <Redirect from="/" to="/books" exact />
         <h1>Livros</h1>
-        <Route path="/books" exact>
-          <Books books={books} setBooks={setBooks} />
-        </Route>
+        <Switch>
+          <Redirect from="/" to="/books" exact />
 
-        <Route path="/books/new-book">
-          <BookForm books={books} setBooks={setBooks} />
-        </Route>
+          <Route path="/books" exact>
+            <Books books={books} setBooks={setBooks} />
+          </Route>
 
-        <Route path="/book/:id">
-          <BookForm books={books} setBooks={setBooks} />
-        </Route>
+          <Route path="/books/new-book">
+            <BookForm books={books} setBooks={setBooks} />
+          </Route>
+
+          <Route path="/book/:id" exact>
+            <Book />
+          </Route>
+
+          <Route render={() => <div>Página não encontrada</div>} />
+        </Switch>
       </div>
     </BrowserRouter>
   );
