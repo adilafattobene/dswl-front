@@ -3,6 +3,7 @@ import "./App.css";
 import React, { useState } from "react";
 
 import Books from "./components/Books/Books";
+import Menu from "./components/Menu/Menu";
 import img from "./components/Book/images/book.png";
 import BookForm from "./components/NewBookForm/NewBookForm";
 
@@ -14,6 +15,7 @@ export default function App() {
 
   return (
     <div className="App">
+      <Menu/>
       <BookForm books={books} setBooks={setBooks} />
       <Books books={books} setBooks={setBooks} />
     </div>
