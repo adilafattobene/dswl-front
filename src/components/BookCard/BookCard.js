@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { BookIcon } from "./BookIcon";
 import "./BookCard.css";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import BookModal from "../BookModal/BookModal";
 import styled from "styled-components";
+import { BooksContext } from "../../context/BooksProvider";
 
 const IconesContainer = styled.div`
   display: flex;
@@ -12,6 +13,8 @@ const IconesContainer = styled.div`
 
 export default function BookCard(props) {
   const [openModal, setOpenModal] = useState(false);
+
+  const { deleteBookHandle, changeBookHandle } = useContext(BooksContext);
 
   const book = {
     id: props.index,
@@ -33,12 +36,12 @@ export default function BookCard(props) {
         {props.children}
       </div>
       <IconesContainer>
-        <DeleteForeverIcon onClick={props.onClickDeleteBook} />
+        <DeleteForeverIcon onClick={deleteBookHandle} />
         <BookModal
           book={book}
           openModal={openModal}
           setOpenModal={setOpenModal}
-          onBookEdit={props.onBookEdit}
+          onBookEdit={changeBookHandle}
         />
       </IconesContainer>
     </div>

@@ -1,22 +1,9 @@
-import React from "react";
-import img from "../BookCard/images/book.png";
+import React, { useContext } from "react";
 
-export default function BookForm(props) {
-  const onBookSubmit = (event) => {
-    event.preventDefault();
+import { BooksContext } from "../../context/BooksProvider";
 
-    let newBooks = [
-      ...props.books,
-      {
-        id: props.books.length,
-        name: event.target.name.value,
-        author: event.target.author.value,
-        pages: event.target.pages.value,
-        image: img,
-      },
-    ];
-    props.setBooks(newBooks);
-  };
+export default function BookForm() {
+  const { onBookSubmit } = useContext(BooksContext);
 
   return (
     <form onSubmit={onBookSubmit}>

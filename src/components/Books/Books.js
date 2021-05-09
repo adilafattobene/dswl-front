@@ -1,37 +1,16 @@
 import BookCard from "../BookCard/BookCard";
-import img from "../BookCard/images/book.png";
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { BooksContext } from "../../context/BooksProvider";
 
-export default function Books(props) {
-  const deleteBookHandle = (index) => {
-    let newBooks = props.books.slice();
-
-    newBooks.splice(index, 1);
-    props.setBooks(newBooks);
-  };
-
-  const changeBookHandle = (event) => {
-    event.preventDefault();
-
-    let id = Number(event.target.id.value);
-
-    let newBooks = props.books.slice();
-
-    newBooks[id] = {
-      id: id,
-      name: event.target.name.value,
-      author: event.target.author.value,
-      pages: event.target.pages.value,
-      image: img,
-    };
-
-    props.setBooks(newBooks);
-  };
+export default function Books() {
+  const { books, deleteBookHandle, changeBookHandle } = useContext(
+    BooksContext
+  );
 
   return (
     <div>
-      {props.books.map((book, index) => {
+      {books.map((book, index) => {
         return (
           <div>
             <BookCard
@@ -43,8 +22,8 @@ export default function Books(props) {
               image={book.image}
             >
               component_description
-              <br/>
-              <br/>
+              <br />
+              <br />
               <Link to={"/book/" + Number(book.id)} key={index}>
                 {" "}
                 Clique para saber mais...
